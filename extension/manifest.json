@@ -1,0 +1,20 @@
+{
+	"manifest_version": 2,
+	"name": "Cite URLs",
+	"version": "0.1",
+	"description": "Cite a list of URLs",
+	"permissions": ["tabs", "http://*/*", "https://*/*"],
+	"icons": {
+		"16": "img/icon16.png",
+		"32": "img/icon32.png",
+		"48": "img/icon48.png"
+	},
+	"browser_action": {
+		"default_icon": "img/icon16.png",
+		"default_title": "Cite some URLs"
+	},
+	"background": {
+		"scripts": ["events.js"],
+		"persistent": false
+	}
+}
