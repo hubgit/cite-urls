@@ -2,8 +2,8 @@
 
 ## Instructions (for Chrome)
 
- * Download this extension as a zip file and extract it.
+ * [Download this project as a zip file](https://github.com/hubgit/cite-urls/archive/master.zip) and extract it.
 
- * [chrome://extensions] Check "Developer mode", click "Load unpacked extension...", choose the extracted "extension" directory.
+ * [chrome://extensions] Check "Developer mode", click "Load unpacked extension...", choose the "extension" directory in the extracted project.
 
  * Click the new button in Chrome's toolbar, enter some URLs, and press "Cite".
