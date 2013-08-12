@@ -5,18 +5,18 @@ chrome.browserAction.onClicked.addListener(function() {
 
 var onTabCreated = function(tab) {
 	chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    	var xhr = new XMLHttpRequest();
-    	xhr.open("GET", request.url, true);
-    	xhr.onload = function() {
-    	  	sendResponse({ doi: detectDOI(this.responseXML) });
-    	};
-      xhr.onerror = function() {
-        sendResponse();
-      }
-    	xhr.responseType = "document";
-    	xhr.send();
-
-    	return true;
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", request.url, true);
+		xhr.onload = function() {
+			sendResponse({ doi: detectDOI(this.responseXML) });
+		};
+		xhr.onerror = function() {
+			sendResponse();
+		}
+		xhr.responseType = "document";
+		xhr.send();
+		
+		return true;
 	});
 };
 
