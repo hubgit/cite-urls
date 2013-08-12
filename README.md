@@ -17,6 +17,9 @@
  * Currently only works if a DOI can be detected.
  * May sometimes detect an incorrect DOI.
  * May sometimes receive incorrect metadata.
- * TODO: allow output format to be selected.
- * TODO: scrape metadata from the page.
- * TOOD: generate citation locally using citeproc-js.
+
+## TODO
+
+ - [] allow output format to be selected.
+ - [] scrape metadata from the page.
+ - [] generate citation locally using citeproc-js.
