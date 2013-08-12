@@ -8,6 +8,8 @@
 
  * Click the new button in Chrome's toolbar, enter some URLs, and press "Cite".
 
+## Screenshot
+
  ![Screenshot](screenshot.png)
 
 ## Notes
