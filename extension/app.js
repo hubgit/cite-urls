@@ -22,6 +22,7 @@ var fetch = function(url) {
 			 		var doiNode = node.splitText(doiIndex);
 			 		var link = document.createElement("a");
 			 		link.setAttribute("href", url);
+			 		link.setAttribute("target", "_blank");
 			 		link.appendChild(doiNode);
 			 		row.appendChild(link);
 			 	}
