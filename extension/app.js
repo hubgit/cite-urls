@@ -28,12 +28,12 @@ var fetch = function(url) {
 			}
 			xhr.onerror = function() {
 				row.setAttribute("class", "error");
-			    row.textContent = "Error fetching citation from CrossRef for DOI " + doi;
+				row.textContent = "Error fetching citation from CrossRef for DOI " + doi;
 			}
 			xhr.send();
 		} else {
 			row.setAttribute("class", "error");
-		    row.textContent = "No DOI found in " + url;
+			row.textContent = "No DOI found in " + url;
 		}
 	});
 };
