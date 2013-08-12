@@ -20,6 +20,6 @@
 
 ## TODO
 
- - [] allow output format to be selected.
- - [] scrape metadata from the page.
- - [] generate citation locally using citeproc-js.
+ - [ ] allow output format to be selected.
+ - [ ] scrape metadata from the page.
+ - [ ] generate citation locally using citeproc-js.
