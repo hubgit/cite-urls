@@ -7,3 +7,12 @@
  * Chrome > Tools > Extensions, check "Developer mode", click "Load unpacked extension...", choose the "extension" directory in the extracted project.
 
  * Click the new button in Chrome's toolbar, enter some URLs, and press "Cite".
+
+## Notes
+
+ * Currently only works if a DOI can be detected. 
+ * May sometimes detect an incorrect DOI.
+ * May sometimes receive incorrect metadata.
+ * TODO: allow output format to be selected.
+ * TODO: scrape metadata from the page.
+ * TOOD: generate citation locally using citeproc-js.
