@@ -1,59 +1,46 @@
-var outputList = document.getElementById("output");
-var inputForm = document.getElementById("input");
-var loading;
+var output = document.getElementById("output");
 
-var output = function(url, doi, citation) {
-	if (loading) {
-		loading.parentNode.removeChild(loading);
-		loading = null;
-	}
-
-	var text = citation + " ";
-
-	if (doi) {
-		text += "doi:" + doi + " ";
-	}
-
-	text += url;
-
+var fetch = function(url) {
 	var row = document.createElement("li");
-	row.textContent = text;
+	row.innerHTML = "Fetching&hellip;";
+	output.appendChild(row);
 
-	outputList.appendChild(row);
-};
-
-var fetchCitation = function(url, doi) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://data.crossref.org/" + encodeURIComponent(doi), true);
-	xhr.setRequestHeader("Accept", "text/bibliography; style=apa; locale=en-GB");
-	xhr.onload = function() {
-	  output(url, null, this.responseText); // responseText contains doi:{doi} already
-	}
-	xhr.onerror = function() {
-	  output(url, doi, "Error fetching citation");
-	}
-	xhr.send();
-};
-
-var fetchDOI = function(url) {
 	chrome.runtime.sendMessage({ url: url.trim() }, function(response) {
 		if (response.doi) {
-			fetchCitation(url, response.doi);
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "http://data.crossref.org/" + encodeURIComponent(response.doi), true);
+			xhr.setRequestHeader("Accept", "text/bibliography; style=apa; locale=en-GB");
+			xhr.onload = function() {
+				row.textContent = "";
+
+				var node = document.createTextNode(this.responseText);
+				row.appendChild(node);
+
+			 	var doiIndex = this.responseText.indexOf("doi:");
+
+			 	if (doiIndex) {
+			 		var doiNode = node.splitText(doiIndex);
+			 		var link = document.createElement("a");
+			 		link.setAttribute("href", url);
+			 		link.appendChild(doiNode);
+			 		row.appendChild(link);
+			 	}
+			}
+			xhr.onerror = function() {
+				row.setAttribute("class", "error");
+			    row.textContent = "Error fetching citation from CrossRef for DOI " + doi;
+			}
+			xhr.send();
 		} else {
-			output("No DOI found for URL " + url);
+			row.setAttribute("class", "error");
+		    row.textContent = "No DOI found in " + url;
 		}
 	});
 };
 
-inputForm.addEventListener("submit", function(event) {
+document.getElementById("input").addEventListener("submit", function(event) {
 	event.preventDefault();
-
-	outputList.innerHTML = "";
-
-	loading = document.createElement("li");
-	loading.innerHTML = "Fetching&hellip;";
-	outputList.appendChild(loading);
-
-	inputForm.querySelector("textarea").value.split("\n").map(fetchDOI);
+	output.innerHTML = "";
+	event.target.querySelector("textarea").value.split("\n").map(fetch);
 }, true);
 
