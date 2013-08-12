@@ -27,7 +27,7 @@ var fetchCitation = function(url, doi) {
 	xhr.open("GET", "http://data.crossref.org/" + encodeURIComponent(doi), true);
 	xhr.setRequestHeader("Accept", "text/bibliography; style=apa; locale=en-GB");
 	xhr.onload = function() {
-	  output(url, doi, this.responseText);
+	  output(url, null, this.responseText); // responseText contains doi:{doi} already
 	}
 	xhr.onerror = function() {
 	  output(url, doi, "Error fetching citation");
