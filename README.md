@@ -8,9 +8,11 @@
 
  * Click the new button in Chrome's toolbar, enter some URLs, and press "Cite".
 
+ ![Screenshot](screenshot.png)
+
 ## Notes
 
- * Currently only works if a DOI can be detected. 
+ * Currently only works if a DOI can be detected.
  * May sometimes detect an incorrect DOI.
  * May sometimes receive incorrect metadata.
  * TODO: allow output format to be selected.
